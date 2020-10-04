@@ -1,23 +1,12 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+var customData = ('./budget-data.json');
+
 
 app.use('/', express.static('public'));
 
-const budget = [
-    {
-        title: "Eat Out",
-        budget: 40
-    },
-    {
-        title: "Rent",
-        budget: 370
-    },
-    {
-        title: "Groceries",
-        budget: 100
-    },
-];
+
 
 app.get('/hello',( req, res) => {
 
@@ -27,7 +16,8 @@ app.get('/hello',( req, res) => {
 
 app.get('/budget',( req, res) => {
 
-    res.json(budget);
+    ///res.sendFile('/xampp/dev/personal-budget/budget-data.json');
+    res.sendFile('budget-data.json', { root: __dirname });
 
 });
 
